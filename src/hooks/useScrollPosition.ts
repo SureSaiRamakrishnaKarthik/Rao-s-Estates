@@ -1,0 +1,1 @@
+export const useScrollPosition = () => { return 0; }

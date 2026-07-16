@@ -1,0 +1,1 @@
+export default function NewPropertyPage() { return <main>New Property</main>; }

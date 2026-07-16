@@ -1,0 +1,1 @@
+export const siteConfig = { name: 'Rao Estates', tagline: 'Best properties', socials: {}, seo: {} };

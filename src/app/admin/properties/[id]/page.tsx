@@ -1,0 +1,1 @@
+export default function EditPropertyPage() { return <main>Edit Property</main>; }

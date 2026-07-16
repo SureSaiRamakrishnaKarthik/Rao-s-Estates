@@ -1,0 +1,276 @@
+{
+  "summary": {
+    "totalProjects": 12,
+    "missingFields": {
+      "approvalType": 9,
+      "price": 12,
+      "brochureUrl": 11,
+      "googleMapsUrl": 12,
+      "amenities": 8,
+      "description": 1,
+      "images": 1
+    },
+    "totalImages": 63,
+    "brokenImages": 0
+  },
+  "projects": [
+    {
+      "title": "Sree Nivasam Phase 2",
+      "slug": "sree-nivasam-phase-2",
+      "developer": "Sri Bhramara",
+      "location": "Guntur",
+      "amenities": [
+        "Entrance Arch equipped with 24-hour CCTV surveillance & security",
+        "Compound wall featuring Solar fencing surrounding the layoutSolar fencing for compound wall",
+        "40 & 30 Feet CC Roads adorned with landscaping on both sides with street lights.",
+        "Water Pipeline connection to every plot for convenient access.",
+        "Implementation of an Underground drainage syste.",
+        "Installation of underground electric cable line for uninterrupted power supply & safety",
+        "Inclusion of Rainwater harvesting pits for sustainable water management.",
+        "Designer landscaping to enhance the aesthetic appeal.",
+        "Dedicated parks designed exclusively for children and a Walking track for residents’ leisure.",
+        "100% Vaasthu Compliant"
+      ],
+      "images": [
+        "https://sribhramara.com/wp-content/uploads/2025/04/01-compressed.jpg",
+        "https://sribhramara.com/wp-content/uploads/2025/04/Duplex-West-View.jpg"
+      ],
+      "description": "Connectivity is indeed one of the major reasons to invest in real estate in Guntur. All the roadways in Guntur have good connections to the various interstates and state highways. Guntur has an added advantage because it is located along National Highway 16, which is also a part of Asian Highway 45. The nearest airport, Vijayawada International Airport, is located at a distance of about 50 km from the city. With the commercial export of Red Chillies, Tobacco, and Cotton to all corners of the globe, Guntur has grown into a commercial hub. The primary occupation of most people in the suburb is agriculture. A significant textile center in India is said to be located in the Guntur region. Sri Bhramara presents an unprecedented luxury project, Sree Nivasam, in Guntur. Spanning 7 acres, this gated community is cocooned by lush greenery and secured by a concrete compound wall. These tranquil properties, including premium duplex houses, promise eternal mental peace and divine happiness.",
+      "projectType": "VILLA_PLOT",
+      "sourceUrl": "https://sribhramara.com/wp-json/wp/v2/pages?slug=ongoing-projects"
+    },
+    {
+      "title": "Ajanthaa",
+      "slug": "ajanthaa",
+      "developer": "Sri Bhramara",
+      "location": "Bapatla",
+      "amenities": [
+        "Entrance Arch equipped with 24-hour CCTV surveillance & security",
+        "Compound wall featuring Solar fencing surrounding the layoutSolar fencing for compound wall",
+        "60 & 40 Feet CC Roads adorned with landscaping on both sides with street lights.",
+        "Water Pipeline connection to every plot for convenient access.",
+        "Implementation of an Underground drainage syste.",
+        "Installation of underground electric cable line for uninterrupted power supply & safety",
+        "Inclusion of Rainwater harvesting pits for sustainable water management.",
+        "Designer landscaping to enhance the aesthetic appeal.",
+        "Dedicated parks designed exclusively for children and a Walking track for residents’ leisure.",
+        "100% Vaasthu Compliant"
+      ],
+      "images": [
+        "https://sribhramara.com/wp-content/uploads/2025/02/Arch-opt-01_Final-View-03-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2025/02/East-Duplex-01_8-Photo-1-scaled.jpg"
+      ],
+      "description": "Located in the heart of the newly established Bapatla district, Sri Bhramara Ajanthaa is a landmark project that blends modern living with the serene charm of coastal life. Positioned at the district headquarters, this visionary development offers a unique combination of luxury villas, premium colleges, relaxing resorts, and well-planned open plots. With its close proximity to the renowned Suryalanka Beach, the project stands as a gateway to both lifestyle and investment opportunities, catering to families, students, investors, and holidaymakers alike. Designed to foster community living while maintaining natural harmony, Sri Bhramara Ajanthaa is where convenience, growth, and leisure converge.\n\nStrategically located in Bapatla’s prime growth zone, the project offers a wide range of possibilities — from building your dream home in a peaceful villa community to investing in open plots, or even experiencing the coastal charm through its resorts. With modern infrastructure, spacious layouts, educational institutions, and hospitality spaces, Sri Bhramara Ajanthaa is more than just a project; it’s a thriving ecosystem designed for growth, learning, relaxation, and living. Whether you’re seeking a smart investment, quality education, a weekend retreat, or a forever home, Sri Bhramara Ajanthaa turns every vision into reality.",
+      "projectType": "OPEN_PLOT",
+      "sourceUrl": "https://sribhramara.com/wp-json/wp/v2/pages?slug=ongoing-projects"
+    },
+    {
+      "title": "Alohaa Resort Beach",
+      "slug": "alohaa-resort-beach",
+      "developer": "Sri Bhramara",
+      "location": "Bapatla",
+      "amenities": [
+        "Myriad Shoreline Delights",
+        "Ideal Celebration Destination for Weddings",
+        "Alohaa’s Kids Play Zone Delights Every Child",
+        "Beach front Hotel with Breathtaking Sea views",
+        "Alohaa’s Cottages and Plots A Paradise of Comfort",
+        "Sparkling Blue Shores – Pure Paradise",
+        "South East’s Goa A Coastal Gem",
+        "Horse Riding and Beach Volley Ball Fun for Everyone",
+        "Seaside Restaurant with Stunning Views",
+        "Savor the Flavors at the Food Court and Beachside Beverages",
+        "Ride the Waves, Soar the Skies Alohaa’s Water Sports",
+        "Ideal Venue for Corporate Excellence",
+        "Experience Joy, Thrill, and Memories at Events Theme Park"
+      ],
+      "images": [
+        "https://sribhramara.com/wp-content/uploads/2024/01/entrance.jpg"
+      ],
+      "description": "Alohaa Beach Resort stands as the latest gem in Sri Bhramara’s portfolio, not only offering an exotic retreat but also a savvy investment opportunity. Just a short 20-minute drive from the vibrant Chirala and Bapatla towns, the resort offers 281 prime plots. Surrounded by breathtaking natural beauty, the resort unfolds against the backdrop of picturesque landscaped gardens, showcasing exquisite and remarkable architecture. It features exclusive simplex luxury cottages, lavish villa cottages, and plots designated for future luxury villas. The resort is not only a haven for relaxation but also an impeccable setting for weddings and a top choice for corporate events, attracting guests from Hyderabad, Vijayawada, Guntur, and Ongole.\n\nThe resort captivates children with a magical play zone, featuring enchanting amusements, captivating entertainment, and a variety of indoor and outdoor games. Water sports and thrilling theme parks add to its allure. For adults seeking an easily accessible yet charming retreat, the resort offers private luxuries and outdoor activities like horse riding, beach volleyball, and engaging sand games.\n\nTransforming into an idyllic honeymoon spot, the resort, surrounded by pristine nature, provides seclusion and intimacy in private luxury cottages, some with enticing pools. Alohaa Beach Resort is undoubtedly, the finest,nearby honeymoon destination. Overall, Alohaa presents pleasure for all ages, offering unique experiences for all occasions, from corporate celebrations and events to grand weddings and leisure parties. A beach paradise par excellence, Alohaa is surely, the epitome of customized perfection, for those seeking an extraordinary andenthralling seaside experience",
+      "projectType": "COMMERCIAL",
+      "sourceUrl": "https://sribhramara.com/wp-json/wp/v2/pages?slug=ongoing-projects"
+    },
+    {
+      "title": "BVSR's Homes",
+      "slug": "bvsrs-homes",
+      "developer": "Sri Bhramara",
+      "location": "Darsi",
+      "amenities": [
+        "Entrance Arch equipped with 24-hour CCTV surveillance",
+        "Compound wall featuring Solar fencing surrounding the layout",
+        "40 feet Roads adorned with landscaping on both sides",
+        "Pipeline connection to every plot for convenient access",
+        "Implementation of an Underground drainage system",
+        "Installation of an Underground electric cable line for safety",
+        "Inclusion of Rainwater harvesting pits for sustainable water management",
+        "Designer landscaping to enhance the aesthetic appeal",
+        "Dedicated parks designed exclusively for children and a Walking track for residents’ leisure",
+        "100% Vaasthu Compliant",
+        "100% Clear Title"
+      ],
+      "images": [
+        "https://sribhramara.com/wp-content/uploads/2023/12/fINAL-02-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/12/East-2.5-Opt-01-01-01-1-1-scaled.jpg"
+      ],
+      "description": "Darsi, in Prakasam district, stands out among towns with its unique features and numerous advantages, experiencing rapid development. It attracts individuals, including teachers, government employees, and business professionals, from hundreds of surrounding villages, who are making Darsi their home. As a consequence, Darsi is witnessing a huge demand in the housing sector, propelling its swift expansion and establishing it as a focal point for spectacular growth in the region.\n\nIn the realm of commerce and construction, Darsi is progressing tremendously. Within its municipal limits, a strategically located 16.5 acre area has become the site of Sri Bhramara Townships’ ambitious project, Sri Bhramara BVSR’s Homes. With ultra-modern urban luxuries and amenities comparable to major cities like Hyderabad, Bangalore, and Vijayawada, Sri Bhramara BVSR’s Homes aims to become a symbol of elite living. Investing in Sri Bhramara BVSR’s Homes not only promises a luxurious lifestyle but also ensures a lucrative future. Darsi is a dynamic and evolving destination that beckons those seeking both a sophisticated lifestyle and financial prosperity.",
+      "projectType": "OPEN_PLOT",
+      "sourceUrl": "https://sribhramara.com/wp-json/wp/v2/pages?slug=ongoing-projects"
+    },
+    {
+      "title": "Regal City",
+      "slug": "regal-city",
+      "developer": "Sri Bhramara",
+      "location": "Guntur",
+      "amenities": [],
+      "images": [
+        "https://sribhramara.com/wp-content/uploads/2023/09/cover-img-regal.jpg"
+      ],
+      "description": "Building Excellence\n\nIt is the dynamic vision and leadership of CMD Sri Galla Ramachandra Rao garu, who has been promoting quality ventures and identifying, developing and delivering superlative housing projects time and again.  SBT has always given high priority to total customer satisfaction and has ensured that the customers are provided the best of everything at the most affordable price. Sri Bhramara Regal City is another jewel in the crown of Sri Bhramara –  The epitome of Royal living.",
+      "projectType": "OPEN_PLOT",
+      "brochureUrl": "https://sribhramara.com/wp-content/uploads/2023/02/Regal-City_Final-Website-Broucher-FINAL.pdf",
+      "sourceUrl": "https://sribhramara.com/wp-json/wp/v2/pages?slug=ongoing-projects"
+    },
+    {
+      "title": "Brundhavan",
+      "slug": "brundhavan",
+      "developer": "Sri Bhramara",
+      "location": "Unknown",
+      "amenities": [],
+      "images": [
+        "https://sribhramara.com/wp-content/uploads/2023/09/cover-img-2.jpg"
+      ],
+      "description": "",
+      "projectType": "OPEN_PLOT",
+      "sourceUrl": "https://sribhramara.com/wp-json/wp/v2/pages?slug=ongoing-projects"
+    },
+    {
+      "title": "Zenith City Phase - I",
+      "slug": "zenith-city-phase-i",
+      "developer": "Sri Bhramara",
+      "location": "Unknown",
+      "amenities": [],
+      "images": [
+        "https://sribhramara.com/wp-content/uploads/2024/08/Sri-Bhramara-Zenith-city-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2024/08/zenith-city-02-1.webp",
+        "https://sribhramara.com/wp-content/uploads/2024/07/zenith-city-02-2.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/01/Zenith-city-site-layout.pdf",
+        "https://sribhramara.com/wp-content/uploads/2023/01/Zenith-city-site-layout-1-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/01/Zenith-city-site-layout-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/06/Zenith-city-Club-House.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/06/Zenith-City-SWIMMING-POOL.jpg"
+      ],
+      "description": "Spread across sprawling 200 acres, Zenith City is a luxurious residential-cum-commercial project at Vinukonda. We have state-of-the-art amenities with villas, individual homes, commercial spaces, highway restaurant, cricket ground, children’s park, devotional theme park, open green landscapes, etc.; all connected by wide BT roads.\n\n7/2021/G",
+      "projectType": "VILLA_PLOT",
+      "approvalType": "LP No.",
+      "sourceUrl": "https://sribhramara.com/wp-json/wp/v2/pages?slug=ongoing-projects"
+    },
+    {
+      "title": "Zenith City Phase - II",
+      "slug": "zenith-city-phase-ii",
+      "developer": "Sri Bhramara",
+      "location": "Unknown",
+      "amenities": [],
+      "images": [
+        "https://sribhramara.com/wp-content/uploads/2022/08/LOGO-7.png"
+      ],
+      "description": "Zenith City Phase-2 is also surrounded by luxury, greenery and classiness. This new residential-cum-commercial venture by Sri Brahmara Townships Private Limited promises a life above all comforts and within your happy pockets. With all state-of-the-art amenities, we have lavish villas, duplex houses, individual homes, open plots, commercial spaces, highway restaurant, cricket ground, children’s park, devotional theme park, open green landscapes, etc\n\n27/2022/G",
+      "projectType": "VILLA_PLOT",
+      "approvalType": "TLP No.",
+      "sourceUrl": "https://sribhramara.com/wp-json/wp/v2/pages?slug=ongoing-projects"
+    },
+    {
+      "title": "Paradise Phase - I",
+      "slug": "paradise-phase-i",
+      "developer": "Sri Bhramara",
+      "location": "Unknown",
+      "amenities": [],
+      "images": [
+        "https://sribhramara.com/wp-content/uploads/2025/04/Paradise-Aerial-View-05-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2024/07/Paradise-02-02-02-02-02-02.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/09/paradise-2.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/09/paradise.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/01/Paradise-site-layout-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/01/Paradise-II-west-facing-floor-plan-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/01/Paradise-II-east-facing-floor-plan-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-14-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-13-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-12-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-11-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-10-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-9-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-8-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-7-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-6-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-5-1.jpg"
+      ],
+      "description": "The Paradise Housing is a well-connected destination to all sorts of transport; industrial, educational, medical and residential areas. Entering this community is next to entering a green heaven. All the modern amenities and well-planned design make this place one’s dream destination.\n\n29/2021/1168/APCRDA/DPMS",
+      "projectType": "VILLA_PLOT",
+      "approvalType": "LP NO.",
+      "sourceUrl": "https://sribhramara.com/wp-json/wp/v2/pages?slug=ongoing-projects"
+    },
+    {
+      "title": "Paradise Phase - II",
+      "slug": "paradise-phase-ii",
+      "developer": "Sri Bhramara",
+      "location": "Unknown",
+      "amenities": [],
+      "images": [
+        "https://sribhramara.com/wp-content/uploads/2025/04/Paradise-Aerial-View-05-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2024/07/Paradise-02-02-02-02-02-02.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/09/paradise-2.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/09/paradise.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/01/Paradise-site-layout-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/01/Paradise-II-west-facing-floor-plan-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/01/Paradise-II-east-facing-floor-plan-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-14-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-13-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-12-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-11-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-10-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-9-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-8-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-7-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-6-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Paradise-5-1.jpg"
+      ],
+      "description": "After the success of our Phase I, we are now launching the Paradise-II, near Vijayawada, with equally luxurious amenities. This project promises a lavish lifestyle for your family with its aesthetically designed 36 duplex houses and 229 plots in 20 acre area at Edupugallu. You get ample space for your dreams, recreation, devotion and leisure here.",
+      "projectType": "VILLA_PLOT",
+      "sourceUrl": "https://sribhramara.com/wp-json/wp/v2/pages?slug=ongoing-projects"
+    },
+    {
+      "title": "Growth City",
+      "slug": "growth-city",
+      "developer": "Sri Bhramara",
+      "location": "Unknown",
+      "amenities": [],
+      "images": [
+        "https://sribhramara.com/wp-content/uploads/2024/08/Sri-Bhramara-Growthcity-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/09/growth-city-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/06/SBT-Growth-City_A4-Leaflet-Telugu.pdf",
+        "https://sribhramara.com/wp-content/uploads/2023/06/SBT-Growth-City_Folder_English.pdf",
+        "https://sribhramara.com/wp-content/uploads/2023/06/SBT-Growth-City_Folder_Telugu.pdf",
+        "https://sribhramara.com/wp-content/uploads/2023/06/Bhramaras-Growth-City-2048x1308-1.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/01/Bhramaras-Growth-City.pdf",
+        "https://sribhramara.com/wp-content/uploads/2023/01/Bhramaras-Growth-City-1-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2023/01/Bhramaras-Growth-City-scaled.jpg",
+        "https://sribhramara.com/wp-content/uploads/2022/07/Growth-City-TELUGU-Final.pdf",
+        "https://sribhramara.com/wp-content/uploads/2022/06/growth-city-1.jpg"
+      ],
+      "description": "Growth City is the new mega project by Sri Brahmara Townships Private Limited that gives you the goodness of both worlds – Natural bliss & Metro-like amenities. This 150 acres project located near the Chennai-Kolkata highway brings to you pre-developed open plots near the APIIC Growth Centre.",
+      "projectType": "OPEN_PLOT",
+      "sourceUrl": "https://sribhramara.com/wp-json/wp/v2/pages?slug=ongoing-projects"
+    },
+    {
+      "title": "Apex Heights",
+      "slug": "apex-heights",
+      "developer": "Sri Bhramara",
+      "location": "Unknown",
+      "amenities": [],
+      "images": [],
+      "description": "It is our pride of achievement, that we have fulfilled the dream of every aspirant who desired a dream home.\n\nOur ultra-luxurious villas, residential homes, and commercial spaces, are testimony to our legacy of trust. This has always been our aim and we continue to excel throughout our journey of success.\n\nOur previous completed projects and ventures are proof of our passion for creating exceptional developments for remarkable lifestyles.",
+      "projectType": "OPEN_PLOT",
+      "sourceUrl": "https://sribhramara.com/wp-json/wp/v2/pages?slug=ongoing-projects"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "raos-estates",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "import:sribhramara": "tsx src/scripts/test.ts",
+    "import:sribhramara:dry": "tsx src/scripts/test.ts --dry-run"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.10",
+    "@hookform/resolvers": "^5.4.0",
+    "@supabase/ssr": "^0.12.2",
+    "@supabase/supabase-js": "^2.110.5",
+    "cheerio": "^1.2.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.24.0",
+    "next": "16.2.10",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-hook-form": "^7.81.0",
+    "slugify": "^1.6.9",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.6.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "dotenv": "^17.4.2",
+    "eslint": "^9.30.0",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4.3.2",
+    "tsx": "^4.23.1",
+    "typescript": "^5.8.0"
+  }
+}
