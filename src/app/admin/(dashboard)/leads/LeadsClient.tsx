@@ -160,7 +160,7 @@ export default function LeadsClient({ initialLeads }: { initialLeads: Lead[] }) 
         onClose={() => setDeleteId(null)}
         onConfirm={handleDelete}
         title="Delete Lead"
-        message="Are you sure you want to delete this lead? This action cannot be undone."
+        description="Are you sure you want to delete this lead? This action cannot be undone."
         isLoading={isDeleting}
       />
 
