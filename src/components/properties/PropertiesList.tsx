@@ -3,54 +3,38 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import Container from "@/components/layout/Container";
+import { getPropertyImage } from "@/lib/utils/image";
 
 export default function PropertiesList({ projects }: { projects: any[] }) {
+  const searchParams = useSearchParams();
   const [search, setSearch] = useState("");
-  const [selectedType, setSelectedType] = useState("All");
-  const [selectedLocation, setSelectedLocation] = useState("All");
+  const [selectedType, setSelectedType] = useState(searchParams.get("type") || "All");
+  const [selectedLocation, setSelectedLocation] = useState(searchParams.get("location") || "All");
 
   // Get unique locations and types for filters
   const uniqueLocations = useMemo(() => {
     const locations = projects
       .map((p) => p.locations?.name)
       .filter((name): name is string => typeof name === "string" && name.trim() !== "");
-    return ["All", ...Array.from(new Set(locations))];
-  }, [projects]);
+    
+    const set = new Set(locations);
+    if (selectedLocation && selectedLocation !== "All") set.add(selectedLocation);
+    return ["All", ...Array.from(set)];
+  }, [projects, selectedLocation]);
 
   const uniqueTypes = useMemo(() => {
     const types = projects
-      .map((p) => p.approval_type)
+      .map((p) => p.project_types?.name)
       .filter((type): type is string => typeof type === "string" && type.trim() !== "");
-    return ["All", ...Array.from(new Set(types))];
-  }, [projects]);
+    
+    const set = new Set(types);
+    if (selectedType && selectedType !== "All") set.add(selectedType);
+    return ["All", ...Array.from(set)];
+  }, [projects, selectedType]);
 
-  // Image resolver matching fallback aesthetics
-  const getPropertyImage = (property: any) => {
-    if (property.media && property.media.length > 0) {
-      const cover = property.media.find((m: any) => m.is_cover);
-      const target = cover || property.media[0];
-      if (target.url) return target.url;
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-      return `${supabaseUrl}/storage/v1/object/public/${target.bucket}/${target.path}`;
-    }
 
-    const fallbackImages = [
-      "/images/properties/plot-01.jpg",
-      "/images/properties/plot-02.jpg",
-      "/images/properties/plot-03.jpg",
-    ];
-    if (property.slug === "green-valley-plot-14") {
-      return "/images/properties/plot-01.jpg";
-    }
-    const slug = property.slug || "";
-    let hash = 0;
-    for (let i = 0; i < slug.length; i++) {
-      hash = slug.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    const idx = Math.abs(hash) % fallbackImages.length;
-    return fallbackImages[idx];
-  };
 
   // Filter logic
   const filteredProjects = useMemo(() => {
@@ -60,10 +44,12 @@ export default function PropertiesList({ projects }: { projects: any[] }) {
         (property.locations?.name || "").toLowerCase().includes(search.toLowerCase());
 
       const matchesType =
-        selectedType === "All" || property.approval_type === selectedType;
+        selectedType.toLowerCase() === "all" || 
+        (property.project_types?.name || "").toLowerCase().includes(selectedType.toLowerCase());
 
       const matchesLocation =
-        selectedLocation === "All" || property.locations?.name === selectedLocation;
+        selectedLocation.toLowerCase() === "all" || 
+        (property.locations?.name || "").toLowerCase().includes(selectedLocation.toLowerCase());
 
       return matchesSearch && matchesType && matchesLocation;
     });

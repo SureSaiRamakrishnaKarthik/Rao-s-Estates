@@ -7,7 +7,7 @@ export class ProjectService {
     const supabase = await createClient();
     let query = supabase
       .from('projects')
-      .select('*, developers(name), locations(name)')
+      .select('*, developers(name), locations(name), project_types(name)')
       .order('created_at', { ascending: false });
       
     if (searchQuery) {

@@ -99,69 +99,74 @@ function classifyImage(src: string, alt: string, title: string): 'hero' | 'layou
 // ─────────────────────────────────────────────────────────────────────────────
 
 async function discoverProjectUrls(): Promise<DiscoveredProject[]> {
-  console.log('[Stage 1] Fetching listing page via WP API...');
-
-  const res = await fetch(LISTING_PAGE_WP_API);
-  if (!res.ok) throw new Error(`Listing page fetch failed: ${res.statusText}`);
-  const data = await res.json();
-
-  if (!data?.[0]?.content?.rendered) {
-    throw new Error('Could not extract content.rendered from listing page');
-  }
-
-  const html: string = data[0].content.rendered;
-  const $ = cheerio.load(html);
+  console.log('[Stage 1] Fetching listing pages via WP API...');
   const discovered: DiscoveredProject[] = [];
 
-  // --- Strategy A: Collect explicit <a href> links to project pages ---
-  $('a[href]').each((_, el) => {
-    const href = $(el).attr('href') ?? '';
-    if (!isProjectUrl(href)) return;
-
-    // Try to find a title near this link
-    const parentSection = $(el).closest('.elementor-top-section, .elementor-widget-wrap');
-    const rawTitle =
-      parentSection.find('h2, h3, h4').first().text().trim() ||
-      $(el).text().trim() ||
-      extractSlug(href);
-
-    // Try to get a thumbnail image near this link
-    const img = parentSection.find('img').first();
-    const thumbnailUrl = img.attr('src') || img.attr('data-src') || undefined;
-
-    if (!LISTING_SKIP_HEADINGS.has(rawTitle)) {
-      discovered.push({
-        rawTitle,
-        projectUrl: href,
-        thumbnailUrl,
-        rawStatus: 'ongoing',
-        rawProjectType: 'OPEN_PLOT',
-      });
+  const slugs = ['ongoing-projects', 'completed-projects'];
+  
+  for (const pageSlug of slugs) {
+    const res = await fetch(`https://sribhramara.com/wp-json/wp/v2/pages?slug=${pageSlug}&_fields=content,link`);
+    if (!res.ok) {
+      console.warn(`Failed to fetch ${pageSlug}, skipping...`);
+      continue;
     }
-  });
+    const data = await res.json();
+    if (!data?.[0]?.content?.rendered) continue;
 
-  // --- Strategy B: Find headings → look for a link in the same section ---
-  if (discovered.length === 0) {
-    $('h2.elementor-heading-title, h3.elementor-heading-title').each((_, el) => {
-      const title = $(el).text().trim();
-      if (LISTING_SKIP_HEADINGS.has(title) || !title) return;
+    const html: string = data[0].content.rendered;
+    const $ = cheerio.load(html);
+    const pageDiscovered: DiscoveredProject[] = [];
 
-      const section = $(el).closest('.elementor-top-section');
-      const link = section.find('a[href*="sribhramara.com"]').first();
-      const href = link.attr('href') ?? '';
+    // --- Strategy A: Collect explicit <a href> links to project pages ---
+    $('a[href]').each((_, el) => {
+      const href = $(el).attr('href') ?? '';
+      if (!isProjectUrl(href)) return;
 
-      if (isProjectUrl(href)) {
-        const img = section.find('img').first();
-        discovered.push({
-          rawTitle: title,
+      const parentSection = $(el).closest('.elementor-top-section, .elementor-widget-wrap');
+      const rawTitle =
+        parentSection.find('h2, h3, h4').first().text().trim() ||
+        $(el).text().trim() ||
+        extractSlug(href);
+
+      const img = parentSection.find('img').first();
+      const thumbnailUrl = img.attr('src') || img.attr('data-src') || undefined;
+
+      if (!LISTING_SKIP_HEADINGS.has(rawTitle)) {
+        pageDiscovered.push({
+          rawTitle,
           projectUrl: href,
-          thumbnailUrl: img.attr('src') || img.attr('data-src') || undefined,
-          rawStatus: 'ongoing',
+          thumbnailUrl,
+          rawStatus: pageSlug === 'completed-projects' ? 'completed' : 'ongoing',
           rawProjectType: 'OPEN_PLOT',
         });
       }
     });
-  }
+
+    // --- Strategy B: Find headings → look for a link in the same section ---
+    if (pageDiscovered.length === 0) {
+      $('h2.elementor-heading-title, h3.elementor-heading-title').each((_, el) => {
+        const title = $(el).text().trim();
+        if (LISTING_SKIP_HEADINGS.has(title) || !title) return;
+
+        const section = $(el).closest('.elementor-top-section');
+        const link = section.find('a[href*="sribhramara.com"]').first();
+        const href = link.attr('href') ?? '';
+
+        if (isProjectUrl(href)) {
+          const img = section.find('img').first();
+          pageDiscovered.push({
+            rawTitle: title,
+            projectUrl: href,
+            thumbnailUrl: img.attr('src') || img.attr('data-src') || undefined,
+            rawStatus: pageSlug === 'completed-projects' ? 'completed' : 'ongoing',
+            rawProjectType: 'OPEN_PLOT',
+          });
+        }
+      });
+    }
+
+    discovered.push(...pageDiscovered);
+  } // End of for loop
 
   // Remove duplicates by URL
   const seen = new Set<string>();
@@ -181,7 +186,7 @@ async function discoverProjectUrls(): Promise<DiscoveredProject[]> {
 // Stage 2: Extraction — parse each individual project page
 // ─────────────────────────────────────────────────────────────────────────────
 
-async function parseProjectPage(
+export async function parseProjectPage(
   discovered: DiscoveredProject,
 ): Promise<ParsedProject | null> {
   const slug = extractSlug(discovered.projectUrl);

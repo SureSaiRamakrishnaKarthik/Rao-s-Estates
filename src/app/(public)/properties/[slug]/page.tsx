@@ -2,7 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PropertyDetailsClient from "@/components/properties/PropertyDetailsClient";
 import { ProjectService } from "@/services/project.service";
-import { properties as dummyProperties } from "@/data/properties";
+
 import Link from "next/link";
 import Container from "@/components/layout/Container";
 

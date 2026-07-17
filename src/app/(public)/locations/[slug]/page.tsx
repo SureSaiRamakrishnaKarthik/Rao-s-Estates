@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { LocationService } from "@/services/location.service";
 import { ProjectService } from "@/services/project.service";
-import { properties as dummyProperties } from "@/data/properties";
+import { getPropertyImage } from "@/lib/utils/image";
+
 
 export default async function LocationPage({
   params,
@@ -62,51 +63,9 @@ export default async function LocationPage({
     (p) => p.location_id === location.id && p.publish_status === "published"
   );
 
-  // Map dummy project and include if its location matches
-  const dummyProject = {
-    title: dummyProperties[0].title,
-    slug: dummyProperties[0].slug,
-    approval_type: dummyProperties[0].type,
-    starting_price: 1850000,
-    locations: { name: dummyProperties[0].location },
-    construction_status: dummyProperties[0].plotSize,
-    developers: { name: dummyProperties[0].developer },
-    media: [
-      {
-        url: dummyProperties[0].image,
-        is_cover: true
-      }
-    ]
-  };
+  const combinedProjects = dbLocationProjects;
 
-  const isDummyInThisLocation =
-    dummyProject.locations.name.toLowerCase() === location.name.toLowerCase();
 
-  const combinedProjects = isDummyInThisLocation
-    ? [dummyProject, ...dbLocationProjects]
-    : dbLocationProjects;
-
-  // Image Helper matching the homepage
-  const getPropertyImage = (property: any) => {
-    const fallbackImages = [
-      "/images/properties/plot-01.jpg",
-      "/images/properties/plot-02.jpg",
-      "/images/properties/plot-03.jpg",
-    ];
-
-    if (property.slug === "green-valley-plot-14") {
-      return "/images/properties/plot-01.jpg";
-    }
-
-    const slug = property.slug || "";
-    let hash = 0;
-    for (let i = 0; i < slug.length; i++) {
-      hash = slug.charCodeAt(i) + ((hash << 5) - hash);
-    }
-
-    const idx = Math.abs(hash) % fallbackImages.length;
-    return fallbackImages[idx];
-  };
 
   return (
     <>

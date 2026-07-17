@@ -115,7 +115,6 @@ export class ImportService {
         brochure_url: project.brochureUrl ?? null,
         google_map_url: project.googleMapsUrl ?? null,
         thumbnail: project.heroImage ?? project.images[0] ?? null,
-        property_types: project.propertyTypes && project.propertyTypes.length > 0 ? project.propertyTypes : null,
         source_url: project.sourceUrl,
         import_source: 'SriBhramaraImporter',
         last_synced_at: new Date().toISOString(),

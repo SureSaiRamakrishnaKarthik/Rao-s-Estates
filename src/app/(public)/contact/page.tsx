@@ -6,10 +6,40 @@ import Container from "@/components/layout/Container";
 import { contactDetails } from "@/data/nav-links";
 
 export default function ContactPage() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you! Your message has been received. Our advisory team will contact you shortly.");
-    (e.target as HTMLFormElement).reset();
+    setIsSubmitting(true);
+    
+    try {
+      const formData = new FormData(e.target as HTMLFormElement);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        message: formData.get('message'),
+        source: 'contact_page',
+      };
+
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error('Submission failed');
+
+      setSuccess(true);
+      (e.target as HTMLFormElement).reset();
+      
+      setTimeout(() => setSuccess(false), 5000);
+    } catch (error) {
+      alert("There was an error sending your message. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -102,6 +132,7 @@ export default function ContactPage() {
                   </label>
                   <input
                     type="text"
+                    name="name"
                     required
                     className="w-full bg-transparent border-b border-stone-800/40 py-2.5 text-sm text-stone-950 focus:outline-none focus:border-stone-900 transition-colors uppercase tracking-wider"
                     placeholder="YOUR FULL NAME"
@@ -114,6 +145,7 @@ export default function ContactPage() {
                   </label>
                   <input
                     type="email"
+                    name="email"
                     required
                     className="w-full bg-transparent border-b border-stone-800/40 py-2.5 text-sm text-stone-950 focus:outline-none focus:border-stone-900 transition-colors uppercase tracking-wider"
                     placeholder="YOUR EMAIL"
@@ -126,6 +158,7 @@ export default function ContactPage() {
                   </label>
                   <input
                     type="tel"
+                    name="phone"
                     required
                     className="w-full bg-transparent border-b border-stone-800/40 py-2.5 text-sm text-stone-950 focus:outline-none focus:border-stone-900 transition-colors uppercase tracking-wider"
                     placeholder="YOUR PHONE NUMBER"
@@ -137,6 +170,7 @@ export default function ContactPage() {
                     Message Summary
                   </label>
                   <textarea
+                    name="message"
                     required
                     rows={3}
                     className="w-full bg-transparent border-b border-stone-800/40 py-2.5 text-sm text-stone-950 focus:outline-none focus:border-stone-900 transition-colors uppercase tracking-wider resize-none"
@@ -144,12 +178,18 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-4 space-y-4">
+                  {success && (
+                    <div className="text-sm text-emerald-600 bg-emerald-50 px-4 py-3 border border-emerald-100 font-medium">
+                      Thank you! Your message has been received. Our advisory team will contact you shortly.
+                    </div>
+                  )}
                   <button
                     type="submit"
-                    className="w-full bg-stone-900 hover:bg-stone-950 text-white py-4 text-xs font-bold tracking-widest uppercase transition-colors rounded-none"
+                    disabled={isSubmitting}
+                    className="w-full bg-stone-900 hover:bg-stone-950 text-white py-4 text-xs font-bold tracking-widest uppercase transition-colors rounded-none disabled:opacity-70"
                   >
-                    Submit Inquiries &rarr;
+                    {isSubmitting ? "Sending..." : "Submit Inquiry"}
                   </button>
                 </div>
               </form>

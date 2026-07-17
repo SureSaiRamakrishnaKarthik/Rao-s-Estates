@@ -2,31 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
 import ScrollReveal from "@/components/common/ScrollReveal";
+import { getPropertyImage } from "@/lib/utils/image";
 
 export default function FeaturedProperties({ projects }: { projects?: any[] }) {
   const featured = (projects || []).slice(0, 5);
   const [flagship, ...rest] = featured;
 
-  const getPropertyImage = (property: any) => {
-    const fallbackImages = [
-      '/images/properties/plot-01.jpg',
-      '/images/properties/plot-02.jpg',
-      '/images/properties/plot-03.jpg',
-    ];
 
-    if (property.slug === 'green-valley-plot-14') {
-      return '/images/properties/plot-01.jpg';
-    }
-
-    const slug = property.slug || '';
-    let hash = 0;
-    for (let i = 0; i < slug.length; i++) {
-      hash = slug.charCodeAt(i) + ((hash << 5) - hash);
-    }
-
-    const idx = Math.abs(hash) % fallbackImages.length;
-    return fallbackImages[idx];
-  };
 
   if (featured.length === 0) return null;
 
@@ -73,7 +55,7 @@ export default function FeaturedProperties({ projects }: { projects?: any[] }) {
               >
                 <div className="relative aspect-[3/4] lg:aspect-auto lg:h-full lg:min-h-[544px]">
                   <Image
-                    src={getPropertyImage(flagship)}
+                    src={flagship.slug === 'sri-city-markapuram' ? '/images/properties/plot-01.jpg' : getPropertyImage(flagship)}
                     alt={flagship.title}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"

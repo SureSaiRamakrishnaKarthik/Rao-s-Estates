@@ -33,6 +33,12 @@ To ensure total control over the presentation, we implemented a manual override 
 *   If a property requires a specific high-quality render that wasn't available on the scraped site, images can be manually placed in `public/images/manual-uploads/`.
 *   A specialized Node script matches these local images to their respective database project slugs and updates the `thumbnail` column, allowing the Next.js frontend to instantly serve them.
 
+### 4. Lead Management System
+We built an end-to-end CRM within the Admin Dashboard to manage user inquiries:
+*   **API Routes**: Next.js serverless API routes (`/api/contact`) to securely ingest lead data from public forms.
+*   **Database**: Stores Leads mapped directly to the `project_id` and tracks lead `status` (New, Contacted, Converted) and source.
+*   **Admin UI**: A dedicated Client Component `LeadsClient` that features real-time interactive Status updating, Contact Information rendering, and safe Delete functionalities directly connecting with Supabase via Server Actions.
+
 ## 🗄️ Database Schema
 
 The PostgreSQL database (managed via Supabase) is highly relational and normalized:
@@ -43,6 +49,8 @@ The PostgreSQL database (managed via Supabase) is highly relational and normaliz
 *   **`amenities`**: A master list of all possible amenities (e.g., "Underground Drainage", "DTCP Approved").
 *   **`project_amenities`**: A junction table linking `projects` to their respective `amenities`.
 *   **`media`**: Stores all gallery images, layout maps, and location maps for a project. Includes fields like `url`, `is_cover`, `type` (image, layout, location_map), and `sort_order`.
+*   **`project_types`**: Standardized real estate categorization (e.g., Open Plot, Villa, Apartment).
+*   **`leads`**: Centralized inquiry storage tracking customer data, messages, project associations, and CRM statuses.
 
 ## 🛠️ Running the Project
 

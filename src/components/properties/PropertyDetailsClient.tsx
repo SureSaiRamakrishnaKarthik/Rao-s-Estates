@@ -9,6 +9,8 @@ export default function PropertyDetailsClient({ project }: { project: any }) {
   const [activeGalleryIdx, setActiveGalleryIdx] = useState(0);
   const [activeTab, setActiveTab] = useState<"gallery" | "layout" | "map">("gallery");
   const [showInquireModal, setShowInquireModal] = useState(false);
+  const [isSubmittingInquiry, setIsSubmittingInquiry] = useState(false);
+  const [inquirySuccess, setInquirySuccess] = useState(false);
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 
@@ -19,7 +21,36 @@ export default function PropertyDetailsClient({ project }: { project: any }) {
 
   // Classify all project media by type
   const { galleryImages, layoutImages, locationMapImage } = useMemo(() => {
+    const manualUploads: Record<string, string> = {
+      'alohaa-resort-beach': '/images/manual-uploads/aloha-beach-resort.png',
+      'apex-heights': '/images/manual-uploads/apex-heights(gudavalli).avif',
+      'apex': '/images/manual-uploads/apex-heights(gudavalli).avif',
+      'bankers-colony': '/images/manual-uploads/bankers-colony.jpg',
+      'sree-nivasam-chinna-palakaluru': '/images/manual-uploads/sree-nivasam.jpeg',
+      'sree-nivasam-phase-2': '/images/manual-uploads/sree-nivasam.jpeg',
+      'sri-city-markapuram': '/images/manual-uploads/sricity-markapur.jpg',
+      'zenith': '/images/manual-uploads/zenith-city.jpg',
+      'zenith-city-phase-2': '/images/manual-uploads/zenith-city.jpg',
+      'zenith-city-phase-i': '/images/manual-uploads/zenith-city.jpg',
+      'zenith-city-phase-ii': '/images/manual-uploads/zenith-city.jpg',
+    };
+
+    let thumbnailPath: string | null = manualUploads[project.slug];
+    if (!thumbnailPath) {
+      thumbnailPath = project.thumbnail?.startsWith('http') || project.thumbnail?.startsWith('/')
+        ? project.thumbnail
+        : project.thumbnail ? `${supabaseUrl}/storage/v1/object/public/projects/${project.thumbnail}` : null;
+    }
+
     if (!project.media || project.media.length === 0) {
+      if (thumbnailPath) {
+        return {
+          galleryImages: [{ url: thumbnailPath, is_cover: true }],
+          layoutImages: [] as { url: string }[],
+          locationMapImage: null as string | null,
+        };
+      }
+
       const fallbackImages = [
         "/images/properties/plot-01.jpg",
         "/images/properties/plot-02.jpg",
@@ -39,9 +70,7 @@ export default function PropertyDetailsClient({ project }: { project: any }) {
     const layouts: { url: string }[] = [];
     let locMap: string | null = null;
 
-    const thumbnailPath = project.thumbnail?.startsWith('http') || project.thumbnail?.startsWith('/') 
-      ? project.thumbnail 
-      : project.thumbnail ? `${supabaseUrl}/storage/v1/object/public/projects/${project.thumbnail}` : null;
+
 
     let foundThumbnail = false;
 
@@ -166,11 +195,10 @@ export default function PropertyDetailsClient({ project }: { project: any }) {
                     <button
                       key={tab}
                       onClick={() => { setActiveTab(tab as any); setActiveGalleryIdx(0); }}
-                      className={`px-5 py-2.5 text-[10px] font-bold uppercase tracking-widest transition-all border-b-2 -mb-[2px] ${
-                        activeTab === tab
+                      className={`px-5 py-2.5 text-[10px] font-bold uppercase tracking-widest transition-all border-b-2 -mb-[2px] ${activeTab === tab
                           ? "border-stone-900 text-stone-900"
                           : "border-transparent text-stone-500 hover:text-stone-700"
-                      }`}
+                        }`}
                     >
                       {tab === "gallery" ? "📸 Photos" : tab === "layout" ? "🗺 Site Layout" : "📍 Location Map"}
                     </button>
@@ -202,11 +230,10 @@ export default function PropertyDetailsClient({ project }: { project: any }) {
                     <button
                       key={index}
                       onClick={() => setActiveGalleryIdx(index)}
-                      className={`relative h-16 w-28 shrink-0 overflow-hidden border-2 transition-all ${
-                        activeGalleryIdx === index
+                      className={`relative h-16 w-28 shrink-0 overflow-hidden border-2 transition-all ${activeGalleryIdx === index
                           ? "border-stone-900 scale-95"
                           : "border-transparent opacity-60 hover:opacity-100 hover:border-stone-400"
-                      }`}
+                        }`}
                     >
                       <Image
                         src={media.url}
@@ -439,24 +466,54 @@ export default function PropertyDetailsClient({ project }: { project: any }) {
             </p>
 
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                setShowInquireModal(false);
-                alert("Thank you! Our consultant will contact you shortly.");
+                setIsSubmittingInquiry(true);
+                
+                try {
+                  const formData = new FormData(e.target as HTMLFormElement);
+                  const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    message: formData.get('message'),
+                    source: 'property_page',
+                    project_id: project.id
+                  };
+
+                  const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                  });
+
+                  if (!res.ok) throw new Error('Submission failed');
+
+                  setInquirySuccess(true);
+                  setTimeout(() => {
+                    setShowInquireModal(false);
+                    setInquirySuccess(false);
+                  }, 2000);
+                } catch (error) {
+                  alert("There was an error sending your inquiry. Please try again.");
+                } finally {
+                  setIsSubmittingInquiry(false);
+                }
               }}
               className="mt-8 space-y-6 font-sans text-left"
             >
               {[
-                { label: "Full Name", type: "text", placeholder: "YOUR NAME" },
-                { label: "Email Address", type: "email", placeholder: "YOUR EMAIL" },
-                { label: "Phone Number", type: "tel", placeholder: "YOUR PHONE NUMBER" },
-              ].map(({ label, type, placeholder }) => (
+                { label: "Full Name", type: "text", placeholder: "YOUR NAME", name: "name" },
+                { label: "Email Address", type: "email", placeholder: "YOUR EMAIL", name: "email" },
+                { label: "Phone Number", type: "tel", placeholder: "YOUR PHONE NUMBER", name: "phone" },
+              ].map(({ label, type, placeholder, name }) => (
                 <div key={label}>
                   <label className="text-[10px] tracking-widest text-stone-500 uppercase font-semibold block mb-1">
                     {label}
                   </label>
                   <input
                     type={type}
+                    name={name}
                     required
                     className="w-full bg-transparent border-b border-stone-800/40 py-2 text-sm text-stone-950 focus:outline-none focus:border-stone-900 transition-colors uppercase tracking-wider"
                     placeholder={placeholder}
@@ -469,18 +526,26 @@ export default function PropertyDetailsClient({ project }: { project: any }) {
                   Message (Optional)
                 </label>
                 <textarea
+                  name="message"
                   rows={2}
                   className="w-full bg-transparent border-b border-stone-800/40 py-2 text-sm text-stone-950 focus:outline-none focus:border-stone-900 transition-colors uppercase tracking-wider resize-none"
                   placeholder="I AM INTERESTED IN A PRIVATE VIEWING..."
                 />
               </div>
 
-              <button
-                type="submit"
-                className="w-full bg-stone-900 hover:bg-stone-950 text-white py-3.5 text-xs font-bold tracking-widest uppercase transition-colors rounded-none mt-4"
-              >
-                Submit Inquiry &rarr;
-              </button>
+              {inquirySuccess ? (
+                <div className="text-sm text-emerald-600 bg-emerald-50 px-4 py-3 border border-emerald-100 font-medium text-center">
+                  Thank you! Our consultant will contact you shortly.
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  disabled={isSubmittingInquiry}
+                  className="w-full bg-stone-900 hover:bg-stone-950 text-white py-3.5 text-xs font-bold tracking-widest uppercase transition-colors rounded-none mt-4 disabled:opacity-70"
+                >
+                  {isSubmittingInquiry ? "Sending..." : "Submit Inquiry \u2192"}
+                </button>
+              )}
             </form>
           </div>
         </div>

@@ -4,28 +4,21 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const propertyTypes = [
-  "Open Plots",
-  "Residential Plots",
-  "Commercial Lands",
-  "Farm Lands",
-  "Apartments",
+  "Open Plot",
+  "Apartment",
+  "Villa",
+  "Farm Land",
+  "Commercial Plot",
 ];
 
 // Dummy list — will come from the locations table in Supabase later
 const locations = [
-  "Markapur",
-  "Vijayawada",
+  "Markapuram",
+  "Vijayawada City",
   "Guntur",
   "Amaravati",
-  "Chirala",
+  "Vinukonda",
   "Bapatla",
-];
-
-const priceRanges = [
-  { label: "Under ₹10L", value: "0-1000000" },
-  { label: "₹10L - ₹25L", value: "1000000-2500000" },
-  { label: "₹25L - ₹50L", value: "2500000-5000000" },
-  { label: "₹50L+", value: "5000000-" },
 ];
 
 // Custom sleek dropdown to replace the ugly native <select>
@@ -115,13 +108,11 @@ export default function PropertySearch() {
   const router = useRouter();
   const [type, setType] = useState("");
   const [location, setLocation] = useState("");
-  const [price, setPrice] = useState("");
 
   function handleSearch() {
     const params = new URLSearchParams();
     if (type) params.set("type", type);
     if (location) params.set("location", location);
-    if (price) params.set("price", price);
     router.push(`/properties?${params.toString()}`);
   }
 
@@ -129,7 +120,7 @@ export default function PropertySearch() {
     <div className="sticky top-0 z-40 w-full bg-black py-4 lg:py-6">
       <div className="mx-auto w-full max-w-5xl px-4 xl:px-0">
         <section className="flex flex-col rounded-3xl border border-cream-50/15 bg-[#0a0a0a] px-5 py-4 shadow-2xl lg:flex-row lg:items-center lg:justify-between lg:rounded-full lg:px-8 lg:py-2.5">
-          <div className="grid flex-1 grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 lg:divide-x lg:divide-cream-50/15">
+          <div className="grid flex-1 grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8 lg:divide-x lg:divide-cream-50/15">
             {/* Location */}
             <IconField icon={<PinIcon />} label="Location">
               <CustomDropdown
@@ -153,22 +144,7 @@ export default function PropertySearch() {
                 options={propertyTypes.map((t) => ({ label: t, value: t }))}
               />
             </IconField>
-
-            {/* Budget */}
-            <IconField
-              icon={<CoinIcon />}
-              label="Budget"
-              className="border-t border-cream-50/10 pt-4 lg:border-t-0 lg:pl-8 lg:pt-0"
-            >
-              <CustomDropdown
-                value={price}
-                onChange={setPrice}
-                placeholder="Any Budget"
-                options={priceRanges}
-              />
-            </IconField>
           </div>
-
           <button
             onClick={handleSearch}
             className="mt-6 flex shrink-0 items-center justify-center gap-2 rounded-full bg-cream-50 px-8 py-3.5 text-[10px] font-bold tracking-[0.2em] uppercase text-black transition-transform hover:scale-105 lg:mt-0 lg:ml-8"
@@ -247,19 +223,7 @@ function BuildingIcon() {
   );
 }
 
-function CoinIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4">
-      <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="1.2" />
-      <path
-        d="M10 6.5v7M8 7.8h2.5a1.3 1.3 0 010 2.6H9.5a1.3 1.3 0 000 2.6H12"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
+
 
 function SearchIcon() {
   return (
